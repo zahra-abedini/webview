@@ -6,11 +6,16 @@ import { WebView } from 'react-native-webview';
 export default function App() {
   const indexHTML = require('./index.html');
 
+  function onMessage(data) {
+    alert(data.nativeEvent.data);
+  }
+
   return (
     <WebView
       style={styles.container}
       originWhitelist={['*']}
       source={indexHTML}
+      onMessage={onMessage}
     />
   );
 }
